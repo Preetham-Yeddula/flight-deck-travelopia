@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFlightDetail } from '../hooks/useFlightDetail';
 import { FlightDetail } from '../types/Flight';
+import NotFound from './NotFound';
 
 export const FlightDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -66,7 +67,7 @@ export const FlightDetails: React.FC = () => {
     </div>
   );
 
-  if (!flightDetail) return null;
+  if (!flightDetail) return <NotFound />;
 
   const statusInfo = getStatusInfo(flightDetail.status);
 
