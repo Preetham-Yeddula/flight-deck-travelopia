@@ -9,17 +9,6 @@ export const FlightDetails: React.FC = () => {
   const navigate = useNavigate();
   const { flightDetail, loading, error } = useFlightDetail(id || '');
 
-  if (loading) {
-    return <div role="status" aria-live="polite">Loading flight details...</div>;
-  }
-
-  if (error) {
-    return <div role="alert">{error}</div>;
-  }
-
-  if (!flightDetail) {
-    return <div role="alert">No flight details found.</div>;
-  }
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString('en-US', {
@@ -49,7 +38,7 @@ export const FlightDetails: React.FC = () => {
 
   if (loading) return (
     <div className="flex justify-center items-center h-screen">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      <div data-testid="loading-spinner" className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
     </div>
   );
 

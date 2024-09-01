@@ -27,9 +27,9 @@ describe("FlightDetails", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole("status")).toHaveTextContent(
-      "Loading flight details..."
-    );
+    const loadingSpinner = screen.getByTestId("loading-spinner");
+    expect(loadingSpinner).toBeInTheDocument();
+    expect(loadingSpinner).toHaveClass("animate-spin", "rounded-full", "h-32", "w-32", "border-t-2", "border-b-2", "border-blue-500");
   });
 
   it("displays error state", () => {
@@ -47,9 +47,8 @@ describe("FlightDetails", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      "Failed to fetch flight details"
-    );
+    expect(screen.getByText("Failed to fetch flight details")).toBeInTheDocument();
+    expect(screen.getByText("Back to Flight Board")).toBeInTheDocument();
   });
 
   it("displays flight details when loaded", () => {
