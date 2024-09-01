@@ -44,6 +44,18 @@ yarn dev
 
 This will start the development server. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
+## Running the tests
+
+To run the tests, run:
+
+```
+npm run test
+```
+or with yarn:
+```
+yarn test
+```
+
 ## Building for Production
 
 To create a production build, run:
